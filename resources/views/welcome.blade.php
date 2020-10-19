@@ -81,14 +81,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel Project
                 </div>
 
                 <div class="links">
                     <a href="/task">View Tasks</a>
                     <a href="/task/create">Create New Task</a>
-                    <a href="/task/delete">Delete Task</a>
-                    <a href="/task/show">Search Task</a>
                 </div>
             </div>
         </div>
