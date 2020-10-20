@@ -31,7 +31,7 @@
                             <div class="form-group row">
                                 <label for="genre" class="col-sm-4 col-form-label text-md-right">{{ __('Description') }}</label>
                                 <div class="col-md-6">
-                                    <input id="description" type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" value="" required autofocus />
+                                    <textarea id="description" name="description" rows="4" cols="50" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}"></textarea>
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('description') }}</strong>

@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="/">oioi</a>
+                    <a href="/">home</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="/task">goto task</a>
                     <a href="https://blog.laravel.com">Blog</a>
