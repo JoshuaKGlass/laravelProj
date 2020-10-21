@@ -18,10 +18,13 @@
     <h1 class="display-3">Tasks</h1>     
   <table class="table table-striped"> 
     <thead> 
-        <tr> 
+        <tr>
           <td>ID</td> 
           <td>Title</td> 
-          <td>Description</td>  
+          <td>Description</td>
+          @if((Auth::user()->name == "admin"))
+          <td>Completed by</td>
+          @endif
           <td colspan = 2>Actions</td> 
         </tr> 
     </thead> 
@@ -30,7 +33,8 @@
         <tr> 
             <td>{{$task->id}}</td> 
             <td>{{$task->Title}}</td> 
-            <td>{{$task->Description}}</td> 
+            <td>{{$task->Description}}</td>
+            @if((Auth::user()->name == "admin"))
             <td> 
                 <a href="{{ route('task.edit',$task->id)}}" class="btn btn-primary">Edit</a> 
             </td> 
@@ -40,11 +44,12 @@
                   @method('DELETE') 
                   <button class="btn btn-danger" type="submit">Delete</button> 
                 </form> 
-            </td> 
+            </td>
+            @endif
         </tr> 
         @endforeach 
     </tbody> 
-  </table> 
+  </table>
 <div> 
 </div> 
 

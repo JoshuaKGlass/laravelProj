@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Task;
+
 
 class TaskController extends Controller
 {
@@ -44,7 +47,10 @@ class TaskController extends Controller
 
     $task = new Task([ 
             'Title' => $request->get('title'), 
-            'Description' => $request->get('description') 
+            'Description' => $request->get('description'),
+            'is_completed' => (false),
+            'completed_by' => (null),
+
         ]); 
         $task->save(); 
         return redirect('/task')->with('success', 'Task saved!');
@@ -89,7 +95,9 @@ class TaskController extends Controller
 
         $task = Task::find($id); 
         $task->Title = $request->get('title'); 
-        $task->Description = $request->get('description'); 
+        $task->Description = $request->get('description');
+        $task->is_completed = (1);
+        $task->completed_by = Auth::user()->name;
         $task->save(); 
 
         return redirect('task')->with('success', 'task updated!');
