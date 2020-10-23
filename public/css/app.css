@@ -630,6 +630,7 @@ pre code {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+  margin-top: auto;
   margin-right: auto;
   margin-left: auto;
 }
@@ -5018,6 +5019,7 @@ input[type=button].btn-block {
 .card > .card-header + .list-group,
 .card > .list-group + .card-footer {
   border-top: 0;
+  padding-top: 15px;
 }
 
 .card-body {

@@ -86,10 +86,23 @@
                 <div class="title m-b-md">
                     Laravel Project
                 </div>
-
+                
+            @if (Route::has('login'))
                 <div class="links">
-                    <a href="/task">View Tasks</a>
-                    <a href="/task/create">Create New Task</a>
+                    @auth
+                    <a href="{{ url('/') }}">home</a>
+                        <a href="{{ url('/home') }}">dashboard</a>
+                        <a href="/task">View Tasks</a>
+                        <a href="/task/create">Create New Task</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
                 </div>
             </div>
         </div>

@@ -17,9 +17,15 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all(); 
-
-        return view('tasks.index', compact('tasks')); 
+        //only admin can see all tasks
+        if(Auth::user()->name == 'admin'){
+        $tasks = Task::all();
+    
+        }
+        else{
+            $tasks = Task::all()->where('is_completed', '0');
+        }
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -64,7 +70,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        return view('tasks.show', compact('id'));
+        return view('tasks.show', compact('id'));        
     }
 
     /**
@@ -91,13 +97,24 @@ class TaskController extends Controller
         $request->validate([ 
             'title'=>'required', 
             'description'=>'required' 
-        ]); 
+        ]);
 
         $task = Task::find($id); 
         $task->Title = $request->get('title'); 
         $task->Description = $request->get('description');
-        $task->is_completed = (1);
-        $task->completed_by = Auth::user()->name;
+
+        //logic to change if completed box is ticked or unticked
+        if(!(isset($request->completed))){
+            $task->is_completed = (0);
+            $task->completed_by = (null);
+
+        }
+        else{
+            $task->is_completed = (1);
+            $task->completed_by = Auth::user()->name;
+        }
+
+
         $task->save(); 
 
         return redirect('task')->with('success', 'task updated!');

@@ -27,7 +27,9 @@
                 <a class="navbar-brand"href="{{ url('/') }}">Home</a>
                             <a class="navbar-brand"href="{{ url('/home') }}">Dashboard</a>
                             <a class="navbar-brand"href="/task">View Tasks</a>
+                             
                             <a class="navbar-brand"href="/task/create">Create New Task</a>
+                            
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -63,7 +65,10 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                     <a class="dropdown-item" href="/task">View Tasks</a>
+                                    <!-- only admin can create task-->
+                                    @if((Auth::user()->name == "admin")) 
                                     <a class="dropdown-item" href="/task/create">Create New Task</a>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
