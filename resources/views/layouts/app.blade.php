@@ -27,9 +27,9 @@
                 <a class="navbar-brand"href="{{ url('/') }}">Home</a>
                             <a class="navbar-brand"href="{{ url('/home') }}">Dashboard</a>
                             <a class="navbar-brand"href="/task">View Tasks</a>
-                             
+                            @if((Auth::user()->name == "admin")) 
                             <a class="navbar-brand"href="/task/create">Create New Task</a>
-                            
+                            @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
